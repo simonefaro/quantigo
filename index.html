@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Quantigo — A Discovery School on Quantum Computing, Università di Catania.">
+<title>Quantigo ’27 — A Discovery School on Quantum Computing</title>
+<style>
+:root{
+  --navy:#071b4a;--navy2:#102861;--purple:#6934c6;--blue:#0d5ce4;
+  --teal:#058d91;--orange:#ff7b08;--ink:#101d43;--muted:#586884;
+  --line:#dce5f4;--soft:#f5f7fc;--white:#fff;--shadow:0 18px 45px rgba(21,44,99,.10)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#fff;line-height:1.55}
+a{text-decoration:none;color:inherit}img{display:block;max-width:100%}button{font:inherit}
+.container{width:min(1180px,calc(100% - 40px));margin:auto}
+.eyebrow{color:var(--purple);text-transform:uppercase;letter-spacing:.15em;font-size:.76rem;font-weight:900}
+.section-title{margin:10px 0 14px;font-size:clamp(1.8rem, 3.0vw, 2.6rem);line-height:1.02;letter-spacing:-.055em}
+.section-copy{max-width:850px;color:var(--muted);font-size:1.12rem}
+.btn{min-height:48px;padding:0 24px;border-radius:8px;border:1px solid transparent;display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:850;transition:.2s}
+.btn-primary{background:var(--navy);border-color:var(--navy);color:#fff;box-shadow:0 9px 22px rgba(7,27,74,.18)}
+.btn-primary:hover{background:var(--navy2);transform:translateY(-2px)}
+.btn-secondary{background:#fff;border-color:#9aa8c5;color:var(--navy)}
+.btn-secondary:hover{border-color:var(--navy);background:#f8faff}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid #edf0f6}
+.nav{min-height:90px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.header-logo{width:430px;max-width:63vw;height:100px;object-fit:contain;object-position:left center;margin-left:35px}
+.nav-links{display:flex;align-items:center;gap:24px;font-size:.79rem;font-weight:850;color:#1d2a51}
+.nav-links a:not(.nav-register){position:relative;padding:9px 0}
+.nav-links a:not(.nav-register)::after{content:"";position:absolute;left:35%;right:35%;bottom:0;height:2px;background:var(--purple);transform:scaleX(0);transition:.2s}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+.nav-register{padding:13px 20px;border-radius:8px;background:var(--navy);color:#fff}
+.menu-button{display:none;border:0;background:none;color:var(--navy);font-size:1.7rem;cursor:pointer}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;padding:72px 0 48px;background:radial-gradient(circle at 80% 36%,rgba(217,230,255,.74),transparent 30%),radial-gradient(circle at 64% 68%,rgba(239,229,255,.55),transparent 27%),linear-gradient(180deg,#fff,#fbfcff)}
+.hero-grid{display:grid;grid-template-columns:1.04fr .96fr;align-items:center;gap:42px}
+.hero-brand-row{display:flex;align-items:flex-start;gap:14px;white-space:nowrap;margin-bottom:0px}
+.hero-text-logo{width:min(630px,100%);height:auto}
+.hero-year{font-size:clamp(2.3rem,4vw,4rem);line-height:1;color:var(--navy);font-weight:900;letter-spacing:-.05em;margin-top:45px}
+.hero-subtitle{margin:0 35px 0px;color:var(--purple);text-transform:uppercase;letter-spacing:.18em;font-weight:900;font-size:clamp(1rem,2vw,1.32rem);line-height:1.5}
+.hero-description{max-width:620px;margin:0 35px;color:#41506f;font-size:1.08rem}
+.hero-actions{display:flex;gap:15px;flex-wrap:wrap;margin-top:30px}
+.hero-payoff{margin-top:27px;color:var(--navy);letter-spacing:.20em;text-transform:uppercase;font-weight:800;font-size:.79rem}
+.hero-payoff .p1{color:var(--purple)}.hero-payoff .p2{color:var(--blue)}.hero-payoff .p3{color:var(--orange)}
+.hero-visual{display:grid;place-items:center;min-height:470px;position:relative}
+.hero-logo-large{width:min(660px,110%);filter:drop-shadow(0 28px 30px rgba(25,47,102,.10));position:relative;z-index:2}
+.hero-glow{position:absolute;width:470px;height:470px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.9),rgba(214,229,255,.27) 45%,transparent 72%)}
+
+/* FEATURES/STATS */
+.feature-panel{margin-top:15px;display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+.feature{text-align:center;padding:25px 25px;border-right:1px solid var(--line)}.feature:last-child{border-right:0}
+.feature-icon{width:58px;height:58px;margin:0 auto 12px;border-radius:50%;display:grid;place-items:center;font-size:1.7rem}
+.feature h3{margin:0 0 8px;font-size:1rem}.feature p{margin:0;color:var(--muted);font-size:.87rem}
+.stats{margin-top:22px;background:radial-gradient(circle at 5% 115%,rgba(105,52,198,.28),transparent 30%),radial-gradient(circle at 98% 105%,rgba(13,92,228,.20),transparent 28%),linear-gradient(105deg,#071742,#09215a);border-radius:14px;color:#fff;display:grid;grid-template-columns:repeat(5,1fr);overflow:hidden}
+.stat{padding:28px 24px;border-right:1px solid rgba(255,255,255,.15)}.stat:last-child{border-right:0}
+.stat-icon{font-size:1.9rem;margin-bottom:7px}.stat b{display:block;font-size:2rem;line-height:1}.stat strong{display:block;margin-top:7px;font-size:.78rem;letter-spacing:.06em}.stat span{display:block;color:#c8d1e8;font-size:.8rem;margin-top:5px}
+.stat-message{display:flex;flex-direction:column;justify-content:center;font-weight:900;text-transform:uppercase;line-height:1.3}
+
+/* PROGRAM */
+.program-section{padding:92px 0;background:var(--soft)}
+.program-head{margin-bottom:46px}
+.program-list{display:grid;gap:16px}
+.program-day{display:grid;grid-template-columns:155px 1fr auto;gap:28px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:22px;padding:28px 30px;transition:.22s}
+.program-day:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.day-label{color:var(--purple);font-weight:950;font-size:1rem}
+.program-day h3{margin:0 0 5px;font-size:1.22rem}.program-day p{margin:0;color:var(--muted);font-size:1.02rem}
+.badge{padding:9px 15px;border-radius:999px;background:#eaf0ff;color:var(--blue);font-size:.82rem;font-weight:900}
+
+/* JOURNEY */
+.journey{padding:70px 0 55px}.journey-head{text-align:center;margin-bottom:34px}.journey-head .section-title{font-size:clamp(2rem,4vw,3rem)}
+.journey-grid{display:grid;grid-template-columns:repeat(5,1fr)}
+.journey-item{text-align:center;padding:15px 24px;border-right:1px solid var(--line)}.journey-item:last-child{border-right:0}
+.journey-icon{font-size:2.2rem;margin-bottom:12px}.journey-item h3{margin:0 0 8px;font-size:1rem;line-height:1.25}.journey-item p{margin:0;color:var(--muted);font-size:.84rem}
+
+/* AUDIENCE */
+.audience-section{padding:90px 0;background:#fff}
+.audience-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:42px}
+.audience-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:34px;box-shadow:0 12px 28px rgba(21,44,99,.07)}
+.audience-icon{width:62px;height:62px;border-radius:18px;display:grid;place-items:center;font-size:1.65rem;margin-bottom:20px}
+.audience-card h3{font-size:1.35rem;margin:0 0 10px}.audience-card p{color:var(--muted)}
+.audience-card ul{margin:20px 0 0;padding-left:20px;color:#465570}.audience-card li{margin:9px 0}
+
+/* SPEAKERS */
+.speakers{padding:50px 0;border-top:1px solid var(--line)}
+.speakers-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.speaker-grid{display:grid;grid-template-columns:repeat(5,1fr)}
+.speaker{text-align:center;padding:5px 18px;border-right:1px solid var(--line)}.speaker:last-child{border-right:0}
+.avatar{width:76px;height:76px;margin:auto;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#e1e8f7,#f1e8fb);border:5px solid #eef2fa;font-size:2rem}
+.speaker h3{margin:10px 0 2px;font-size:.87rem}.speaker p{margin:0;font-size:.72rem;color:var(--muted)}
+
+/* FAQ */
+.faq-section{padding:92px 0;background:var(--soft)}
+.faq-list{display:grid;gap:15px;margin-top:44px}
+.faq-item{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.faq-question{width:100%;border:0;background:none;padding:25px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;text-align:left;color:var(--ink);font-size:1.13rem;font-weight:900;cursor:pointer}
+.faq-plus{font-size:1.55rem;font-weight:700}
+.faq-answer{max-height:0;overflow:hidden;color:var(--muted);transition:max-height .3s ease,padding .3s ease;padding:0 28px}
+.faq-item.open .faq-answer{max-height:180px;padding:0 28px 24px}
+
+/* CTA/FOOTER */
+.cta{margin:30px 0 38px;padding:30px 35px;color:#fff;border-radius:15px;background:radial-gradient(circle at 7% 120%,rgba(105,52,198,.5),transparent 30%),radial-gradient(circle at 95% 105%,rgba(13,92,228,.35),transparent 28%),linear-gradient(100deg,#172072,#071b4a);display:flex;align-items:center;justify-content:space-between;gap:30px}
+.cta h2{margin:0 0 4px;font-size:1.7rem}.cta p{margin:0;color:#d4dcf1}.cta .btn{background:#fff;color:var(--navy);min-width:190px}
+footer{padding:12px 0 28px}.footer-grid{display:grid;grid-template-columns:1.25fr repeat(3,.56fr) .9fr;gap:28px;border-top:1px solid var(--line);padding-top:24px}
+.footer-logo{width:285px}.footer-grid h4{margin:0 0 9px;font-size:.75rem}.footer-grid a{display:block;margin:5px 0;color:#445272;font-size:.75rem}
+.institution{display:flex;justify-content:flex-end;align-items:center;gap:28px;color:var(--navy);font-weight:900}.institution .unict{font-size:1.35rem;line-height:.9}.institution .dmi{font-size:1.8rem}
+.footer-bottom{margin-top:23px;padding-top:14px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:25px;color:#66718c;font-size:.72rem}
+.reveal{opacity:0;transform:translateY(18px);transition:.65s ease}.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:1020px){
+ .menu-button{display:block}.nav-links{position:absolute;top:90px;left:0;right:0;display:none;flex-direction:column;padding:25px;background:#fff;border-bottom:1px solid var(--line)}.nav-links.open{display:flex}
+ .header-logo{max-width:62vw}.hero-grid{grid-template-columns:1fr}.hero-brand-row{max-width:820px}.hero-visual{min-height:390px}
+ .feature-panel{grid-template-columns:1fr 1fr}.feature:nth-child(2){border-right:0}.feature:nth-child(-n+2){border-bottom:1px solid var(--line)}
+ .stats{grid-template-columns:1fr 1fr}.stat:nth-child(even){border-right:0}.stat-message{grid-column:1/-1}
+ .journey-grid{grid-template-columns:repeat(2,1fr)}.journey-item{border-bottom:1px solid var(--line)}
+ .speaker-grid{grid-template-columns:repeat(3,1fr)}.speaker{margin-bottom:24px}
+ .footer-grid{grid-template-columns:1fr 1fr 1fr}
+}
+@media(max-width:680px){
+ .container{width:min(100% - 24px,1180px)}.header-logo{width:250px;max-width:74vw}.hero{padding-top:48px}
+ .hero-brand-row{gap:8px}.hero-text-logo{width:min(78vw,520px)}.hero-year{font-size:clamp(1.6rem,8vw,2.5rem)}
+ .hero-visual{min-height:290px}
+ .feature-panel,.stats,.journey-grid,.speaker-grid,.footer-grid,.audience-grid{grid-template-columns:1fr}
+ .feature,.stat,.journey-item,.speaker{border-right:0;border-bottom:1px solid var(--line)}
+ .program-day{grid-template-columns:1fr;gap:10px}.badge{justify-self:start}
+ .cta,.footer-bottom{flex-direction:column;align-items:flex-start}.institution{justify-content:flex-start}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="container nav">
+<a href="#home"><img class="header-logo" src="quantigo_logo.png" alt="Quantigo"></a>
+<button class="menu-button" aria-label="Apri il menu">☰</button>
+<nav class="nav-links">
+<a href="#home" class="active">HOME</a><a href="#about">ABOUT</a><a href="#program">PROGRAM</a><a href="#speakers">SPEAKERS</a><a href="#audience">PARTECIPA</a><a href="#faq">FAQ</a><a href="#register" class="nav-register">REGISTER</a>
+</nav>
+</div>
+</header>
+
+<main id="home">
+<section class="hero">
+<div class="container hero-grid">
+<div class="reveal">
+<div class="hero-brand-row"><img class="hero-text-logo" src="quantigo_text.png" alt="Quantigo"><!--<span class="hero-year">’27</span>--></div>
+<div class="hero-subtitle">A Discovery School<br>on Quantum Computing</div>
+<p class="hero-description">Una scuola immersiva rivolta agli studenti delle scuole superiori e dei primi anni universitari STEM, per scoprire l’informatica quantistica, incontrare giovani ricercatori e immaginare il futuro del calcolo.</p>
+<div class="hero-actions"><a class="btn btn-primary" href="#register">REGISTER NOW</a><a class="btn btn-secondary" href="#program">SCOPRI IL PROGRAMMA</a></div>
+<!--<div class="hero-payoff"><span class="p1">Discover.</span> &nbsp;|&nbsp; <span class="p2">Learn.</span> &nbsp;|&nbsp; <span class="p3">Go</span> Quantum.</div>-->
+</div>
+<div class="hero-visual reveal"><div class="hero-glow"></div><img class="hero-logo-large" src="quantigo_logo_2.png" alt="Simbolo Quantigo"></div>
+</div>
+
+<div class="container">
+<div class="feature-panel reveal" id="about">
+<article class="feature"><div class="feature-icon" style="background:#eee7ff;color:#6934c6">🎓</div><h3 style="color:#6934c6">LEARN</h3><p>Mini-corsi, tutorial e sessioni interattive con esperti.</p></article>
+<article class="feature"><div class="feature-icon" style="background:#e8f0ff;color:#0d5ce4">👥</div><h3 style="color:#0d5ce4">CONNECT</h3><p>Incontra studenti, ricercatori e professionisti appassionati di quantum.</p></article>
+<article class="feature"><div class="feature-icon" style="background:#e3f4f4;color:#058d91">🚀</div><h3 style="color:#058d91">GET INSPIRED</h3><p>Storie, applicazioni e prospettive che stanno plasmando il futuro.</p></article>
+<article class="feature"><div class="feature-icon" style="background:#fff0e2;color:#ff7b08">🧩</div><h3 style="color:#ff7b08">BUILD</h3><p>Quiz, sfide, laboratori e nuove idee da sviluppare insieme.</p></article>
+</div>
+<div class="stats reveal">
+<div class="stat"><div class="stat-icon" style="color:#8150dc">▦</div><b>4</b><strong>DAYS</strong><span>of workshops, talks and labs</span></div>
+<div class="stat"><div class="stat-icon" style="color:#2781f0">♙</div><b>12+</b><strong>EXPERTS</strong><span>from academia and industry</span></div>
+<div class="stat"><div class="stat-icon" style="color:#18a5a0">🎓</div><b>150+</b><strong>STUDENTS</strong><span>sharing curiosity and passion</span></div>
+<div class="stat"><div class="stat-icon" style="color:#ff8a19">◎</div><b>1</b><strong>QUANTUM COMMUNITY</strong><span>to learn, connect and grow</span></div>
+<div class="stat stat-message">Be part of the<br>next quantum<br>generation.</div>
+</div>
+</div>
+</section>
+
+
+<section class="journey"><div class="container">
+<div class="journey-head reveal"><div class="eyebrow">The Journey</div>
+<h2 class="section-title">Scoprire il quantum, un passo alla volta</h2></div>
+<div class="journey-grid reveal">
+<article class="journey-item"><div class="journey-icon" style="color:#6934c6">⚛</div><h3>Quantum<br>Fundamentals</h3><p>Dai qubit ai fenomeni quantistici: le idee fondamentali rese intuitive.</p></article>
+<article class="journey-item"><div class="journey-icon" style="color:#0d5ce4">⌘</div><h3>Quantum<br>Algorithms</h3><p>Algoritmi, interferenza e vantaggio quantistico attraverso esempi accessibili.</p></article>
+<article class="journey-item"><div class="journey-icon" style="color:#058d91">⌨</div><h3>Hands-on<br>Labs</h3><p>Programma, simula ed esegui semplici circuiti con strumenti reali.</p></article>
+<article class="journey-item"><div class="journey-icon" style="color:#ff7b08">◉</div><h3>Applications<br>& Impact</h3><p>Scopri le potenziali applicazioni e il possibile impatto sulla società.</p></article>
+<article class="journey-item"><div class="journey-icon" style="color:#6934c6">◌</div><h3>Career &<br>Community</h3><p>Conosci persone, percorsi universitari e opportunità nel mondo quantum.</p></article>
+</div></div></section>
+
+<section class="program-section" id="program">
+<div class="container">
+<div class="program-head reveal"><div class="eyebrow">Agenda</div>
+<h2 class="section-title">Le tappe del viaggio</h2>
+<p class="section-copy">Quattro giornate costruite come un percorso di scoperta: dalle idee fondamentali del quantum computing alle sue applicazioni più affascinanti, alternando ispirazione, approfondimento e momenti di confronto.</p></div>
+<div class="program-list">
+<article class="program-day reveal"><div class="day-label">DAY 01</div><div><h3>Why Quantum?</h3><p>Dai limiti del calcolo classico alle idee fondamentali della meccanica quantistica.</p></div><span class="badge">Fondamenti</span></article>
+<article class="program-day reveal"><div class="day-label">DAY 02</div><div><h3>Quantum Algorithms</h3><p>Come l’interferenza diventa una risorsa computazionale: Grover, teleportation e oltre.</p></div><span class="badge">Algoritmi</span></article>
+<article class="program-day reveal"><div class="day-label">DAY 03</div><div><h3>Program a Quantum Computer</h3><p>Costruzione di circuiti, simulatori, hardware reale e una sessione hands-on guidata.</p></div><span class="badge">Laboratorio</span></article>
+<article class="program-day reveal"><div class="day-label">DAY 04</div><div><h3>Quantum Futures</h3><p>Applicazioni, cybersecurity, AI, hardware, ricerca e opportunità di studio e carriera.</p></div><span class="badge">Prospettive</span></article>
+</div>
+</div>
+</section>
+
+
+
+<section class="audience-section" id="audience">
+<div class="container">
+<div class="reveal"><div class="eyebrow">A chi è rivolto</div><h2 class="section-title">Per studenti curiosi, a ogni livello</h2><p class="section-copy">Quantigo è progettato per accompagnare studenti con esperienze diverse nella scoperta del quantum computing, offrendo contenuti accessibili, stimolanti e adeguati al livello di preparazione di ciascuno.</p></div>
+<div class="audience-grid">
+<article class="audience-card reveal"><div class="audience-icon" style="background:#eee7ff;color:#6934c6">S</div><h3>Studenti delle scuole superiori</h3><p>Studenti degli ultimi anni delle scuole secondarie superiori, interessati alla matematica, all’informatica, alla fisica e, più in generale, alle sfide scientifiche e tecnologiche del futuro.</p><ul><li>Nessuna conoscenza preliminare di quantum computing.</li><li>Intuizioni visuali ed esempi accessibili.</li><li>Attività con forte valore orientativo verso l'università.</li></ul></article>
+<article class="audience-card reveal"><div class="audience-icon" style="background:#e3f4f4;color:#058d91">U</div><h3>Studenti universitari STEM</h3><p>Studenti dei primi anni dei corsi in Informatica, Matematica, Fisica, Ingegneria e discipline affini, interessati a comprendere i principi del quantum computing e il suo impatto sulle tecnologie del futuro.</p><ul><li>Approfondimenti introduttivi ma rigorosi.</li><li>Laboratori e semplici esperienze di programmazione.</li><li>Presentazione del percorso dedicato al Quantum.</li></ul></article>
+</div>
+</div>
+</section>
+
+<section class="speakers" id="speakers"><div class="container">
+<div class="speakers-heading"><div class="eyebrow">Invited Speakers</div><a href="#" class="eyebrow">See all speakers →</a></div>
+<div class="speaker-grid reveal">
+<article class="speaker"><div class="avatar">👩‍🔬</div><h3>Speaker Name</h3><p>Quantum Algorithms</p></article>
+<article class="speaker"><div class="avatar">👨‍🏫</div><h3>Speaker Name</h3><p>Quantum Information</p></article>
+<article class="speaker"><div class="avatar">👩‍💻</div><h3>Speaker Name</h3><p>Quantum Software</p></article>
+<article class="speaker"><div class="avatar">👨‍🔬</div><h3>Speaker Name</h3><p>Quantum Hardware</p></article>
+<article class="speaker"><div class="avatar">👩‍🏫</div><h3>Speaker Name</h3><p>Quantum Applications</p></article>
+</div></div></section>
+
+<section class="faq-section" id="faq">
+<div class="container">
+<div class="reveal"><div class="eyebrow">FAQ</div><h2 class="section-title">Le informazioni essenziali.</h2></div>
+<div class="faq-list">
+<article class="faq-item reveal"><button class="faq-question">Servono prerequisiti specifici?<span class="faq-plus">+</span></button><div class="faq-answer"><p>No. Quantigo è pensato per essere accessibile anche a chi non ha alcuna esperienza di quantum computing. Non sono richieste conoscenze specifiche di fisica quantistica o di informatica quantistica: è sufficiente avere curiosità e interesse per le discipline scientifiche e tecnologiche. Le lezioni partiranno dai concetti fondamentali, presentati con un approccio divulgativo, intuitivo e ricco di esempi, per poi guidare progressivamente i partecipanti verso una comprensione più profonda dei principi, degli algoritmi e delle applicazioni del calcolo quantistico. Gli approfondimenti saranno introdotti in modo graduale, così da permettere a tutti di seguire il percorso e apprezzare le idee che stanno alla base di una delle tecnologie più promettenti del prossimo futuro.</p></div></article>
+<article class="faq-item reveal"><button class="faq-question">La partecipazione è gratuita?<span class="faq-plus">+</span></button><div class="faq-answer"><p>Sì. La partecipazione a Quantigo è completamente gratuita. Per motivi organizzativi è però richiesta la registrazione e i posti sono limitati. Per favorire la partecipazione del maggior numero possibile di istituti, sarà riservato un numero massimo di posti per ciascuna scuola superiore. Anche gli studenti universitari potranno registrarsi liberamente, fino a esaurimento dei posti disponibili. Le modalità e le tempistiche di iscrizione saranno comunicate sul sito nelle prossime settimane.</p></div></article>
+<article class="faq-item reveal"><button class="faq-question">È previsto un attestato?<span class="faq-plus">+</span></button><div class="faq-answer"><p>Sì. Quantigo prevede il rilascio di un attestato di partecipazione per tutti coloro che completeranno con successo il percorso formativo. A conclusione di ciascun mini-corso sarà proposto un breve test di verifica, pensato per consolidare gli argomenti trattati e accompagnare i partecipanti verso una comprensione sempre più approfondita del quantum computing. Il superamento di tutti i test costituisce il requisito per il rilascio dell’attestato finale.</p></div></article>
+<article class="faq-item reveal"><button class="faq-question">Le attività saranno in italiano o in inglese?<span class="faq-plus">+</span></button><div class="faq-answer"><p>Sì. Tutte le lezioni e le attività di Quantigo saranno svolte in italiano, così da garantire un’esperienza accessibile e coinvolgente per tutti i partecipanti. Eventuali termini tecnici in lingua inglese, di uso comune nel mondo del quantum computing, saranno introdotti e spiegati durante il percorso.</p></div></article>
+</div>
+</div>
+</section>
+
+<section id="participate"><div class="container"><div class="cta reveal" id="register"><div><h2>Ready to go quantum?</h2><p>Registrati e Scopri la tecnologia che sta cambiando il futuro.</p></div><a class="btn" href="mailto:quantigo@unict.it">REGISTER NOW</a></div></div></section>
+</main>
+
+<footer><div class="container">
+<div class="footer-grid">
+<div><img class="footer-logo" src="quantigo_logo.png" alt="Quantigo"></div>
+<div><h4>EVENT</h4><a href="#about">About Quantigo</a><a href="#program">Program</a><a href="#speakers">Speakers</a><a href="#">Partners</a></div>
+<div><h4>PARTICIPATE</h4><a href="#register">Register</a><a href="#audience">For Students</a><a href="#audience">For Schools</a><a href="#">For Partners</a></div>
+<div><h4>INFO</h4><a href="#">Venue</a><a href="#">Travel & Stay</a><a href="#faq">FAQ</a><a href="mailto:quantigo@unict.it">Contact</a></div>
+<div class="institution"><div class="unict">Uni<br>CT</div><div class="dmi">DMI</div></div>
+</div>
+<div class="footer-bottom"><span>© 2027 Quantigo — University of Catania. All rights reserved.</span><span>Privacy Policy &nbsp; | &nbsp; Terms & Conditions</span></div>
+</div></footer>
+
+<script>
+const menuButton=document.querySelector(".menu-button"),navLinks=document.querySelector(".nav-links");
+menuButton.addEventListener("click",()=>navLinks.classList.toggle("open"));
+document.querySelectorAll(".nav-links a").forEach(link=>link.addEventListener("click",()=>navLinks.classList.remove("open")));
+document.querySelectorAll(".faq-question").forEach(button=>button.addEventListener("click",()=>{const item=button.parentElement;item.classList.toggle("open");button.querySelector(".faq-plus").textContent=item.classList.contains("open")?"−":"+"}));
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add("visible")}),{threshold:.1});
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
